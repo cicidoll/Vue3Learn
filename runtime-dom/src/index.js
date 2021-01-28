@@ -1,8 +1,11 @@
 // 1、声明Vue
 export const Vue = {
+    // 获取一个Vue实例
     createApp (options) {
       const app = ensureRender().createApp(options)
       
+      // 扩展mount方法，使之可以在用户m诶呦设置render函数h欧哲template选项时
+      // 获取根组件的模板
       const { mount } = app
       app.mount =  (containerOrSelector) => {
         const container = normalizeContainer(containerOrSelector)
@@ -58,4 +61,10 @@ const isHTMLElement = ( typeof HTMLElement === 'object' ) ?
  */
 const isFunction = function (FunName) {
   return typeof FunName === "function"
+}
+
+let renderer
+
+function ensureRenderer() {
+  return renderer || (render = createRender)
 }
