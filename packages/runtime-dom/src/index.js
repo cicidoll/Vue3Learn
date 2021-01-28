@@ -2,7 +2,7 @@
 export const Vue = {
     // 获取一个Vue实例
     createApp (options) {
-      const app = ensureRender().createApp(options)
+      const app = ensureRenderer().createApp(options)
       
       // 扩展mount方法，使之可以在用户m诶呦设置render函数h欧哲template选项时
       // 获取根组件的模板
@@ -65,6 +65,7 @@ const isFunction = function (FunName) {
 
 let renderer
 
+// 获取一个渲染器的实例
 function ensureRenderer() {
-  return renderer || (render = createRender)
+  return renderer || (render = createRender(rendererOptions))
 }
